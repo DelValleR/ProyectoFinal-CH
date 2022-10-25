@@ -1,6 +1,10 @@
-alert(
-  'Recuerda que tu usuario debe tener entre 2 y 9 caracteres y tu contraseña debe ser un numero del 1 al 100'
-);
+function saludo() {
+  alert(
+    'Recuerda que tu usuario debe tener entre 2 y 9 caracteres y tu contraseña debe ser un numero del 1 al 100'
+  );
+}
+saludo();
+
 let user = prompt('Ingrese su usuario: ');
 while (user.length < 2 || user.length > 10) {
   alert('Usuario no válido');

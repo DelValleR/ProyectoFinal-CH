@@ -1,1 +1,5 @@
-
+.azul {
+  background-image: url('../images/BANSTER\ LAB.jpg');
+  height: 100vh;
+  opacity: 0.5;
+}
