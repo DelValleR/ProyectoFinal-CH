@@ -35,9 +35,11 @@ const camisas = {
   4: new Camisetas(004, 'Amarillo', 45000),
 };
 
-const Prendas = [camisas[1], camisas[2], camisas[3], camisas[4]];
+const Prendas = Object.entries(camisas);
 
-const Colores = Prendas.map((el) => el.color);
+const objeto = Prendas.map((object) => object[1]);
+
+const Colores = objeto.map((el) => el.color);
 
 while (true) {
   let shirts = prompt(
