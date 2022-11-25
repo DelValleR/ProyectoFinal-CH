@@ -79,14 +79,27 @@
             class="form-control"
             id="usuario"
             aria-describedby="emailHelp"
+            placeholder="El usuario debe de tener entre 2 y 9 caracteres"
           />
         </div>
         <div class="mb-3">
           <label for="contraseña" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="contraseña" />
+          <input
+            type="password"
+            class="form-control"
+            id="contraseña"
+            placeholder="Minimo 6 caracteres"
+          />
         </div>
 
-        <button type="submit" class="btn btn-dark" id="ingresa">Submit</button>
+        <button
+          type="button"
+          class="btn btn-dark"
+          id="ingresa"
+          onclick="entrar()"
+        >
+          Ingresar
+        </button>
       </form>
     </section>
 
