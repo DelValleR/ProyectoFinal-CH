@@ -1,10 +1,8 @@
 let productosEnCarrito = localStorage.getItem('productos-en-carrito');
 productosEnCarrito = JSON.parse(productosEnCarrito);
 
-const contenedorCarritoVacio = document.querySelector('#carrito-vacio');
 const contenedorCarritoProductos = document.querySelector('#carrito-productos');
 const contenedorCarritoAcciones = document.querySelector('#carrito-acciones');
-const contenedorCarritoComprado = document.querySelector('#carrito-comprado');
 let botonesEliminar = document.querySelectorAll('.carrito-producto-eliminar');
 const botonVaciar = document.querySelector('#carrito-acciones-vaciar');
 const contenedorTotal = document.querySelector('#total');
@@ -12,10 +10,8 @@ const botonComprar = document.querySelector('#carrito-acciones-comprar');
 
 function cargarProductosCarrito() {
   if (productosEnCarrito && productosEnCarrito.length > 0) {
-    contenedorCarritoVacio.classList.add('disabled');
     contenedorCarritoProductos.classList.remove('disabled');
     contenedorCarritoAcciones.classList.remove('disabled');
-    contenedorCarritoComprado.classList.add('disabled');
 
     contenedorCarritoProductos.innerHTML = '';
 
@@ -27,44 +23,34 @@ function cargarProductosCarrito() {
       <div class="card-body p-4">
         <div class="row d-flex justify-content-between align-items-center">
           <div class="col-md-2 col-lg-2 col-xl-2">
+          <p class="lead fw-normal mb-2">${producto.titulo}</p>
+
             <img
               src="${producto.imagen}"
               class="carrito-producto-imagen img-fluid rounded-3"
               alt="${producto.titulo}"
             />
           </div>
-          <div class="col-md-3 col-lg-3 col-xl-3">
-            <p class="lead fw-normal mb-2">${producto.titulo}</p>
-          </div>
+          
           <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-            <button
-              class="btn btn-link px-2"
-              onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-            >
-              <i class="bi bi-dash"></i>
-            </button>
     
-            <input
-              id="form1"
-              min="0"
-              name="quantity"
-              value="2"
-              type="number"
-              class="form-control form-control-sm"
-            />
+          <div class="carrito-producto-cantidad">
+          <p class="lead fw-normal mb-2">Cantidad</p>
+          <h5 class="mb-0">${producto.cantidad}</h5>
+
+          </div>
     
-            <button
-              class="btn btn-link px-2"
-              onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-            >
-              <i class="bi bi-plus"></i>
-            </button>
           </div>
           <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-            <h5 class="mb-0">$499.00</h5>
+          <p class="lead fw-normal mb-2">Precio</p>
+            <h5 class="mb-0">${producto.precio}</h5>
+          </div>
+          <div class="carrito-producto-subtotal col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+            <p class="lead fw-normal mb-2">Subtotal</p>
+            <h5 class="mb-0">$${producto.precio * producto.cantidad}</h5>
           </div>
           <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-            <a href="#!" class="text-danger"><i class="bi bi-trash3"></i></a>
+            <a class="carrito-producto-eliminar text-danger"><i class="bi bi-trash3"></i></a>
           </div>
         </div>
       </div>
@@ -74,10 +60,8 @@ function cargarProductosCarrito() {
       contenedorCarritoProductos.append(div);
     });
   } else {
-    contenedorCarritoVacio.classList.remove('disabled');
     contenedorCarritoProductos.classList.add('disabled');
     contenedorCarritoAcciones.classList.add('disabled');
-    contenedorCarritoComprado.classList.add('disabled');
   }
 
   actualizarBotonesEliminar();
@@ -135,8 +119,6 @@ function comprarCarrito() {
     JSON.stringify(productosEnCarrito)
   );
 
-  contenedorCarritoVacio.classList.add('disabled');
   contenedorCarritoProductos.classList.add('disabled');
   contenedorCarritoAcciones.classList.add('disabled');
-  contenedorCarritoComprado.classList.remove('disabled');
 }

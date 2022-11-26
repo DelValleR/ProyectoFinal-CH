@@ -69,11 +69,8 @@
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-10">
             <div class="d-flex justify-content-between align-items-center mb-4">
-              <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+              <h3 class="fs-1 mb-0 text-black">Shopping Cart</h3>
             </div>
-            <p id="carrito-vacio" class="text-dark text-center fs-2">
-              TU CARRITO ESTA VACIO.
-            </p>
 
             <div
               id="carrito-productos"
@@ -84,23 +81,23 @@
               <div class="card">
                 <div class="card-body">
                   <div class="carrito-acciones-izquierda">
-                    <button
-                      id="carrito-acciones-vaciar"
-                      class="carrito-acciones-vaciar btn btn-warning btn-block btn-lg"
-                    >
-                      Vaciar carrito
-                    </button>
+                    <div class="carrito-acciones-total">
+                      <h5 class="card-title text-center fs-2">Total:</h5>
+                      <p id="total" class="text-center fs-2">$0</p>
+                    </div>
                   </div>
                   <div class="carrito-acciones-derecha">
-                    <div class="carrito-acciones-total">
-                      <p class="text-center fs-2">Total:</p>
-                      <p id="total" class="text-center fs-2">$3000</p>
-                    </div>
                     <button
                       id="carrito-acciones-comprar"
-                      class="carrito-acciones-comprar btn btn-warning btn-block btn-lg"
+                      class="carrito-acciones-comprar btn btn-warning btn-block btn-lg row-sm-6"
                     >
                       Comprar ahora
+                    </button>
+                    <button
+                      id="carrito-acciones-vaciar"
+                      class="carrito-acciones-vaciar btn btn-light btn-block btn-lg row-sm-6"
+                    >
+                      Vaciar carrito
                     </button>
                   </div>
                 </div>
@@ -110,6 +107,6 @@
         </div>
       </div>
     </section>
-    <script src="./js/carrito.js"></script>
+    <script src="./carrito.js"></script>
   </body>
 </html>
