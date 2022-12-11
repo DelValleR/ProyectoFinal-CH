@@ -1,72 +1,50 @@
-const productos = [
-  {
-    id: 'Camiseta Azul',
-    titulo: 'Camiseta Azul',
-    imagen: '../images/Camiseta Azul.png',
-    precio: 42000,
-  },
-  {
-    id: 'Camiseta Roja',
-    titulo: 'Camiseta Roja',
-    imagen: '../images/Camiseta Roja.png',
-    precio: 40000,
-  },
-  {
-    id: 'Camiseta Amarilla',
-    titulo: 'Camiseta Amarilla',
-    imagen: '../images/Camiseta Amarilla.png',
-    precio: 45000,
-  },
-  {
-    id: 'Camiseta Verde',
-    titulo: 'Camiseta Verde',
-    imagen: '../images/Camiseta Verde.png',
-    precio: 50000,
-  },
-  {
-    id: 'Buzo azul',
-    titulo: 'Buzo Azul',
-    imagen: '../images/Buzo azul.png',
-    precio: 62000,
-  },
-  {
-    id: 'Buzo negro',
-    titulo: 'Buzo Negro',
-    imagen: '../images/Buzo negro.png',
-    precio: 70000,
-  },
-  {
-    id: 'Buzo rojo',
-    titulo: 'Buzo Rojo',
-    imagen: '../images/Buzo rojo.png',
-    precio: 67000,
-  },
-  {
-    id: 'Buzo verde',
-    titulo: 'Buzo Verde',
-    imagen: '../images/Buzo verde.png',
-    precio: 65000,
-  },
-];
-
 document.getElementById('Usuario').innerHTML = localStorage.usuario;
 const contenedorProductos = document.querySelector('#contenedor-productos');
 let botonesAgregar = document.querySelectorAll('.producto-agregar');
 const numerito = document.querySelector('#numerito');
+const busqueda = document.getElementById('busqueda');
+const filtro = document.getElementById('filtro');
+
+let productos = [];
+
+fetch('../productos.json')
+  .then((response) => response.json())
+  .then((data) => {
+    productos = [...data];
+    cargarProductos(productos);
+  });
+
+const filtrar = () => {
+  const text = busqueda.value.toLowerCase();
+  // const productosFiltrados = productos.filter(
+  //   (producto) => producto.id === text
+  // );
+  // console.log(productosFiltrados);
+  for (let producto of productos) {
+    let id = producto.id.toLowerCase();
+    if (id.indexOf(text) !== -1) {
+      contenedorProductos.innerHTML = '';
+      console.log(id);
+    }
+  }
+  console.log(busqueda.value);
+};
+
+filtro.addEventListener('click', filtrar);
 
 function cargarProductos(productosElegidos) {
   contenedorProductos.innerHTML = '';
 
-  productosElegidos.forEach((producto) => {
+  productosElegidos.forEach((data) => {
     const div = document.createElement('div');
     div.classList.add('col-md-3', 'col-sm-6');
     div.innerHTML = `
       <div class="card">
-        <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
+        <img class="producto-imagen" src="${data.imagen}" alt="${data.titulo}">
         <div class="producto-detalles card-body">
-            <h3 class="producto-titulo">${producto.titulo}</h3>
-            <p class="producto-precio card-text">$${producto.precio}</p>
-            <button class="producto-agregar btn btn-dark" id="${producto.id}">Comprar</button>
+            <h3 class="producto-titulo">${data.titulo}</h3>
+            <p class="producto-precio card-text">$${data.precio}</p>
+            <button class="producto-agregar btn btn-dark" id="${data.id}">Comprar</button>
         </div>
       </div>
         `;
@@ -77,13 +55,11 @@ function cargarProductos(productosElegidos) {
   actualizarBotonesAgregar();
 }
 
-cargarProductos(productos);
-
 function actualizarBotonesAgregar() {
   botonesAgregar = document.querySelectorAll('.producto-agregar');
 
   botonesAgregar.forEach((boton) => {
-    boton.addEventListener('click', agregarAlCarrito);
+    boton.addEventListener('click', (e) => agregarAlCarrito(e, productos));
   });
 }
 
@@ -98,7 +74,7 @@ if (productosEnCarritoLS) {
   productosEnCarrito = [];
 }
 
-function agregarAlCarrito(e) {
+function agregarAlCarrito(e, productos) {
   const idBoton = e.currentTarget.id;
   const productoAgregado = productos.find(
     (producto) => producto.id === idBoton
@@ -120,6 +96,21 @@ function agregarAlCarrito(e) {
     'productos-en-carrito',
     JSON.stringify(productosEnCarrito)
   );
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-start',
+    showConfirmButton: false,
+    timer: 3000,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    },
+  });
+
+  Toast.fire({
+    icon: 'success',
+    title: '¡Agregado al carrito!',
+  });
 }
 
 function actualizarNumerito() {

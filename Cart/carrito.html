@@ -35,7 +35,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="./signUp.html"
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="../SignUp/signUp.html"
                 >Login</a
               >
             </li>
@@ -48,12 +51,15 @@
           </ul>
           <form class="d-flex" role="search">
             <input
+              id="busqueda"
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-light" type="submit">Search</button>
+            <button id="filtro" class="btn btn-outline-light" type="button">
+              Search
+            </button>
           </form>
           <a
             id="boton-carrito"
@@ -107,6 +113,8 @@
         </div>
       </div>
     </section>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./carrito.js"></script>
   </body>
 </html>

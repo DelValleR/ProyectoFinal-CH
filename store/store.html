@@ -48,12 +48,15 @@
 
           <form class="d-flex" role="search">
             <input
+              id="busqueda"
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-light" type="submit">Search</button>
+            <button id="filtro" class="btn btn-outline-light" type="button">
+              Search
+            </button>
           </form>
           <a
             id="boton-carrito"
@@ -66,164 +69,11 @@
       </div>
     </nav>
     <h1>Buen dia <span id="Usuario"></span></h1>
-    <!-- <section class="container">
-      <div class="row mt-5">
-        <div class="col-md-3 col-sm-6">
-          <div class="card">
-            <img
-              src="../images/Camiseta Roja.png"
-              class="card-img-top"
-              alt="Camiseta Roja"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Camiseta Roja</h5>
-              <p class="card-text">
-                Camiseta de hombre de suave algodón cardado de 180 gramos, con
-                moderno cuello sencillo lycrado. Colores reactivos que no
-                destiñen con el lavado
-              </p>
-              <button type="button" class="btn btn-dark">Comprar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card">
-            <img
-              src="../images/Camiseta Azul.png"
-              class="card-img-top"
-              alt="Camiseta Azul"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Camiseta Azul</h5>
-              <p class="card-text">
-                Camiseta de hombre de suave algodón cardado de 180 gramos, con
-                moderno cuello sencillo lycrado. Colores reactivos que no
-                destiñen con el lavado
-              </p>
-              <button type="button" class="btn btn-dark">Comprar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card">
-            <img
-              src="../images/Camiseta Verde.png"
-              class="card-img-top"
-              alt="Camiseta Verde"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Camiseta Verde</h5>
-              <p class="card-text">
-                Camiseta de hombre de suave algodón cardado de 180 gramos, con
-                moderno cuello sencillo lycrado. Colores reactivos que no
-                destiñen con el lavado
-              </p>
-              <button type="button" class="btn btn-dark">Comprar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card">
-            <img
-              src="../images/Camiseta Amarilla.png"
-              class="card-img-top"
-              alt="Camiseta Amarilla"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Camiseta Amarilla</h5>
-              <p class="card-text">
-                Camiseta de hombre de suave algodón cardado de 180 gramos, con
-                moderno cuello sencillo lycrado. Colores reactivos que no
-                destiñen con el lavado
-              </p>
-              <button type="button" class="btn btn-dark">Comprar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card">
-            <img
-              src="../images/Buzo negro.png"
-              class="card-img-top"
-              alt="Buzo negro"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Buzo negro</h5>
-              <p class="card-text">
-                El clásico buzo básico de cuello redondo es la prenda perfecta
-                para trabajar desde casa con la máxima comodidad que puede
-                ofrecer una prenda de vestir, o salir por las calles a admirar
-                cada segundo de vida y vivir el momento presente.
-              </p>
-              <button id="add" type="button" class="btn btn-dark">
-                Comprar
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card">
-            <img
-              src="../images/Buzo azul.png"
-              class="card-img-top"
-              alt="Buzo azul"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Buzo azul</h5>
-              <p class="card-text">
-                El clásico buzo básico de cuello redondo es la prenda perfecta
-                para trabajar desde casa con la máxima comodidad que puede
-                ofrecer una prenda de vestir, o salir por las calles a admirar
-                cada segundo de vida y vivir el momento presente.
-              </p>
-              <button type="button" class="btn btn-dark">Comprar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card">
-            <img
-              src="../images/Buzo rojo.png"
-              class="card-img-top"
-              alt="Buzo rojo"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Buzo rojo</h5>
-              <p class="card-text">
-                El clásico buzo básico de cuello redondo es la prenda perfecta
-                para trabajar desde casa con la máxima comodidad que puede
-                ofrecer una prenda de vestir, o salir por las calles a admirar
-                cada segundo de vida y vivir el momento presente.
-              </p>
-              <button type="button" class="btn btn-dark">Comprar</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card">
-            <img
-              src="../images/Buzo verde.png"
-              class="card-img-top"
-              alt="Buzo verde"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Buzo verde</h5>
-              <p class="card-text">
-                El clásico buzo básico de cuello redondo es la prenda perfecta
-                para trabajar desde casa con la máxima comodidad que puede
-                ofrecer una prenda de vestir, o salir por las calles a admirar
-                cada segundo de vida y vivir el momento presente.
-              </p>
-              <button type="button" class="btn btn-dark">Comprar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <section class="container">
       <div id="contenedor-productos" class="row mt-5"></div>
     </section>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="./script.js"></script>
   </body>

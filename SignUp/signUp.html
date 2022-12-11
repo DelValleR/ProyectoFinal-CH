@@ -51,12 +51,15 @@
           </ul>
           <form class="d-flex" role="search">
             <input
+              id="busqueda"
               class="form-control me-2"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-light" type="submit">Search</button>
+            <button id="filtro" class="btn btn-outline-light" type="button">
+              Search
+            </button>
           </form>
           <a
             id="boton-carrito"
@@ -102,6 +105,8 @@
         </button>
       </form>
     </section>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="./script.js"></script>
   </body>
