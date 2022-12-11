@@ -16,18 +16,15 @@ fetch('../productos.json')
 
 const filtrar = () => {
   const text = busqueda.value.toLowerCase();
-  // const productosFiltrados = productos.filter(
-  //   (producto) => producto.id === text
-  // );
-  // console.log(productosFiltrados);
+  const productosBusqueda = [];
   for (let producto of productos) {
     let id = producto.id.toLowerCase();
     if (id.indexOf(text) !== -1) {
       contenedorProductos.innerHTML = '';
-      console.log(id);
+      productosBusqueda.push(producto);
     }
   }
-  console.log(busqueda.value);
+  cargarProductos(productosBusqueda);
 };
 
 filtro.addEventListener('click', filtrar);
@@ -59,7 +56,7 @@ function actualizarBotonesAgregar() {
   botonesAgregar = document.querySelectorAll('.producto-agregar');
 
   botonesAgregar.forEach((boton) => {
-    boton.addEventListener('click', (e) => agregarAlCarrito(e, productos));
+    boton.addEventListener('click', agregarAlCarrito);
   });
 }
 
@@ -74,7 +71,7 @@ if (productosEnCarritoLS) {
   productosEnCarrito = [];
 }
 
-function agregarAlCarrito(e, productos) {
+function agregarAlCarrito(e) {
   const idBoton = e.currentTarget.id;
   const productoAgregado = productos.find(
     (producto) => producto.id === idBoton
